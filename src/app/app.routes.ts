@@ -7,7 +7,6 @@ import { CarrucelComponent } from './componentes/carrucel/carrucel.component';
 export const routes: Routes = [
     {path: 'carrucel' ,component:CarrucelComponent },
     {path: 'yady' ,component:ListaPokemonsComponent },
-    {path: 'yady/detalle/:id' ,component:PokemonDetalleComponent }
-
+    {path: 'yady/detalle/:id' ,component:PokemonDetalleComponent },
     {path: 'home' , component:CarrucelComponent }
 ];
