@@ -1,0 +1,23 @@
+@if (tienda) {
+
+<app-nav></app-nav>
+
+<div class="row">
+    @for (prod of tienda; track prod.id) {
+    <a href="/producto/{{prod.id}}">
+        <div class="card col-3">
+            <div class="card-header">
+                <img src="{{prod.images}}" width="60%" alt="">
+            </div>
+            <div class="card-body">
+                <h2>{{prod.title}}</h2>
+                <p><strong>Precio: </strong>{{prod.price}}</p>
+                <p><strong>Categoría: </strong>{{prod.category.name}}</p>
+                <p><strong>Descripción: </strong>{{prod.description}}</p>
+            </div>
+        </div>
+    </a>
+    }
+</div>
+<app-footer></app-footer>
+}
