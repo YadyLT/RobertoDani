@@ -1,0 +1,50 @@
+<div class="container">
+  @if (pokemon) {
+
+
+  <div class="card p-4 border-0">
+    <div class="row">
+
+      <div class="col-md-4">
+        <img [src]="pokemon.images.large" alt="" class="card-img-top">
+      </div>
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-4">
+        <div class="card-body">
+          <p class="card-text">
+          <h5>Prices</h5>
+          <table class=" table table-borderless table-striped ">
+            <tr>
+              <td>Price Point</td>
+              <td>Foil</td>
+
+            </tr>
+
+            <tr>
+              <td>Low Price</td>
+              <td>{{ pokemon.cardmarket?.prices?.lowPrice  | currency:'EUR' }}</td>
+
+            </tr>
+            <tr>
+              <td>Average Price</td>
+              <td>{{ pokemon.cardmarket?.prices?.averageSellPrice  | currency:'EUR' }}</td>
+
+            </tr>
+            <tr>
+              <td>Trend Price</td>
+              <td>{{ pokemon.cardmarket?.prices?.trendPrice  | currency:'EUR' }}</td>
+
+            </tr>
+
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+}
+</div>

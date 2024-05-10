@@ -1,0 +1,59 @@
+<div class="container">
+
+
+  @if (dataApi){
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <ngb-pagination
+          [collectionSize]="dataApi.totalCount"
+          [(page)]="page"
+          [pageSize]="20"
+          [maxSize]="5"
+          [boundaryLinks]="true"
+          [rotate]="true"
+          (pageChange)="loadPokemons()"
+        />
+      </div>
+    </div>
+    <div #cards  class="row my-3 justify-content-center cards">
+      @for (poke of pokemons; track poke.id) {
+        <div class="col-md-4 my-2">
+
+          <div class="card " [routerLink]="'/yady/detalle/'+poke.id">
+
+            <img [src]="poke.images.small" class="animated  card-img">
+
+
+            <!--   <div class="card-header bg-info">
+                 <div class="card-title">
+                   <h4> {{ poke.name }}</h4>
+
+
+                 </div>
+               </div>
+               <img [src]="poke.images.small">
+               <div class="card-body">
+                 <p class="card-text">
+                   <strong>Rareza: </strong>{{ poke.rarity }}
+                 </p>
+
+               </div>-->
+          </div>
+        </div>
+      }
+    </div>
+
+
+  } @else {
+    <div class="row justify-content-center align-items-center min-vh-80">
+      <div class="col-md-1">
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+    </div>
+
+  }
+
+</div>
