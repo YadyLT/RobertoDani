@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Producto } from './tienda';
+import { Category, Producto } from './tienda';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +16,13 @@ export class DataService {
 
   loadProducto(id: number): Observable<Producto>{
     return this.http.get<Producto>("https://api.escuelajs.co/api/v1/products/" + id);
+  }
+  
+  loadCategorias(): Observable<Category[]>{
+    return this.http.get<Category[]>("https://api.escuelajs.co/api/v1/categories");
+  }
+
+  loadCat(id: number): Observable<Producto[]>{
+    return this.http.get<Producto[]>("https://api.escuelajs.co/api/v1/categories/" + id + "/products");
   }
 }

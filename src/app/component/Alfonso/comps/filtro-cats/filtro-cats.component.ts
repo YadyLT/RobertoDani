@@ -1,39 +1,39 @@
 import { Component, inject } from '@angular/core';
 import { DataService } from '../../common/data.service';
-import { Producto } from '../../common/tienda';
 import { ActivatedRoute } from '@angular/router';
+import { Producto } from '../../common/tienda';
 import { NavComponent } from '../../layouts/nav/nav.component';
 import { FooterComponent } from '../../layouts/footer/footer.component';
 
 @Component({
-  selector: 'app-producto',
+  selector: 'app-filtro-cats',
   standalone: true,
   imports: [NavComponent, FooterComponent],
-  templateUrl: './producto.component.html',
-  styleUrl: './producto.component.css'
+  templateUrl: './filtro-cats.component.html',
+  styleUrl: './filtro-cats.component.css'
 })
-export class ProductoComponent {
+export class FiltroCatsComponent {
 
-  private ar: ActivatedRoute = inject(ActivatedRoute);
   private data: DataService = inject(DataService);
-  producto!: Producto;
+  private ar: ActivatedRoute = inject(ActivatedRoute);
+  prods: Producto[] = []
 
   constructor(){
-    this.cargarProducto();
+    this.cargarCat();
   }
 
-  cargarProducto(){
+  cargarCat(){
     const id = this.ar.snapshot.params["id"];
 
-    this.data.loadProducto(id).subscribe({
-      next: (datos: Producto) => {
-        this.producto = datos;
+    this.data.loadCat(id).subscribe({
+      next: (datos: Producto[]) => {
+        this.prods = datos;
       },
       error: (err: string) => {
         console.log(err);
       },
       complete: () => {
-        console.log("Complete");
+        console.log("Completado");
       }
     })
   }
